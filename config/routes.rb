@@ -1,4 +1,8 @@
 FileTreeExplorer::Application.routes.draw do
+  get "file_tree/index"
+
+  get "file_tree/children"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
