@@ -1,7 +1,8 @@
 FileTreeExplorer::Application.routes.draw do
-  get "file_tree/index"
+  root to: "file_tree#index"
 
-  get "file_tree/children"
+  post "file_tree/children", format: :json, as: :children
+  post "file_tree/content", as: :content
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
