@@ -1,5 +1,0 @@
-routes = window.routes or= {}
-<% h = Rails.application.routes.url_helpers
-  { root: :json, children: :json, content: :html }.each do |route, format| %>
-routes.<%= route %>_path = '<%= h.send :"#{route}_path", format: format %>'
-<% end %>

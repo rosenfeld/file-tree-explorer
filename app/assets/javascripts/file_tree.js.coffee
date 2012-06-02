@@ -1,4 +1,3 @@
-# =require ./file_tree/routes
 $ -> new FileTree
 
 (exports ? window).FileTree = class FileTree
@@ -7,7 +6,7 @@ $ -> new FileTree
     $('#content').dialog(width: 800, height: 600, autoOpen: false)
 
   initializeTree: ->
-    $.getJSON routes.root_path, (@rootEntries)=>
+    $.getJSON Routes.root_path(), (@rootEntries)=>
       @processEntries(@rootEntries)
       @createTree()
 
@@ -23,13 +22,13 @@ $ -> new FileTree
 
   onNodeClick: (e)=>
     (@tree.tree 'toggle', e.node; return) if e.node.type is 'directory'
-    $.post routes.content_path, path: e.node.id, (content)->
+    $.post Routes.content_path(), path: e.node.id, (content)->
       $('#content').text(content).dialog('option', 'title', e.node.id).dialog('open')
 
   onNodeOpen: (e)=>
     return unless (node = e.node).unfetched
     delete node.unfetched
-    $.post routes.children_path, path: node.id, (children)=>
+    $.post Routes.children_path(), path: node.id, (children)=>
       node.children = []
       @processEntries children
       @tree.tree 'loadData', children, node
