@@ -6,7 +6,7 @@ $ -> new FileTree
     $('#content').dialog(width: 800, height: 600, autoOpen: false)
 
   createTree: ->
-    @tree = $('#file-tree').tree(autoOpen: false).bind('tree.click', @onNodeClick)
+    @tree = $('#file-tree').tree().bind('tree.click', @onNodeClick)
 
   onNodeClick: (e)=>
     (@tree.tree 'toggle', e.node; return) if e.node.type is 'directory'
