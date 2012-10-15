@@ -1,3 +1,0 @@
-[submodule "resources/jqtree"]
-	path = resources/jqtree
-	url = git://github.com/mbraak/jqTree.git

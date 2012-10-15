@@ -18,6 +18,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
   gem 'js-routes'
+  gem 'jqtree-rails'
 end
 
 gem 'jquery-rails'
