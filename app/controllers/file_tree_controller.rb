@@ -1,13 +1,9 @@
 class FileTreeController < ApplicationController
   def index
-    respond_to do |format|
-      format.html
-      format.json { render_entries_json }
-    end
   end
 
   def children
-    render_entries_json params[:path]
+    render_entries_json params[:node] || '.'
   end
 
   def content
