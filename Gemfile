@@ -19,7 +19,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'js-routes'
   gem 'oojs', group: [:test, :development]
-  gem 'jqtree-rails'
+  #gem 'jqtree-rails' # currently using dev branch
 end
 
 gem 'jquery-rails'
