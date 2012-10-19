@@ -1,4 +1,3 @@
 [submodule "resources/jqtree"]
 	path = resources/jqtree
-	url = git://github.com/rosenfeld/jqTree.git
-	;url = git://github.com/mbraak/jqTree.git
+	url = git://github.com/mbraak/jqTree.git
