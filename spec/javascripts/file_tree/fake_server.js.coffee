@@ -27,8 +27,9 @@ extendClass 'specs.FileTreeSpec', ->
               handled = true
               settings.success "content for #{settings.data.path}"
           when undefined then switch settings.url
-            when Routes.children_path() then handled = true; settings.success rootEntries()
-            when Routes.children_path(node: 'app') then handled = true; settings.success appEntries()
+            when Routes.children_path() then switch settings.data?.node
+              when undefined then handled = true; settings.success rootEntries()
+              when 'app' then handled = true; settings.success appEntries()
 
       return if handled
       console.log arguments

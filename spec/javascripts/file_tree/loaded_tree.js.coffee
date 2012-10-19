@@ -6,11 +6,10 @@ extendClass 'specs.FileTreeSpec', (spec)->
       $('#file-tree > ul > li:eq(0) > div').click()
       @waitsForAjaxRequest()
       @runs ->
-        @nextRequest Routes.children_path(node: 'app')
+        @checkChildrenRequest 'app'
         $('#file-tree > ul > li:eq(0) li > div').click()
       @waitsForAjaxRequest()
-      @runs -> @checkRequestSettings Routes.children_path(node: 'app/model')
-        .replace('%2F', '/') # jqTree is buggy when id is not numeric
+      @runs -> @checkChildrenRequest 'app/model', false
 
     @it 'loads file content in a pop-up dialog', ->
       $('#content').empty()
@@ -25,3 +24,7 @@ extendClass 'specs.FileTreeSpec', (spec)->
         $('#content').siblings('.ui-dialog-titlebar:first').find('a.ui-dialog-titlebar-close').click()
         @expect($('#content')).not.toBeVisible()
 
+  checkChildrenRequest: (path, should_process = true)->
+    @checkRequestSettings Routes.children_path()
+    @expect(@ajaxSettings().data.node).toBe path
+    @fakeServer.processNextRequest() if should_process
