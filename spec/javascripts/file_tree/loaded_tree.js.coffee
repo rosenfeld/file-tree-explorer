@@ -26,5 +26,5 @@ extendClass 'specs.FileTreeSpec', (spec)->
 
   checkChildrenRequest: (path, should_process = true)->
     @checkRequestSettings Routes.children_path()
-    @expect(@ajaxSettings().data.node).toBe path
+    @expect(@ajaxSettings().data.path).toBe path
     @fakeServer.processNextRequest() if should_process

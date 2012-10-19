@@ -3,7 +3,7 @@ class FileTreeController < ApplicationController
   end
 
   def children
-    render_entries_json params[:node] || '.'
+    render_entries_json params[:path] || '.'
   end
 
   def content

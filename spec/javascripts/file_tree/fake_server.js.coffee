@@ -15,21 +15,22 @@ extendClass 'specs.FileTreeSpec', ->
       if settings then settings.url = url else settings = url
       handled = false
       switch settings.dataType
-#        when 'json' then switch settings.type
-#          when 'get' then switch settings.url
-#          when 'post' then switch settings.url
+#        when 'json' then switch settings.type?.toUpperCase()
+#          when 'GET' then switch settings.url
+#          when 'POST' then switch settings.url
 #           when ...
-        when undefined then switch settings.type
-#         when 'get' then switch settings.url
+        when undefined then switch settings.type?.toUpperCase()
+#         when 'GET' then switch settings.url
 #           when ...
-          when 'post' then switch settings.url
+          when 'POST' then switch settings.url
             when Routes.content_path()
               handled = true
               settings.success "content for #{settings.data.path}"
-          when undefined then switch settings.url
-            when Routes.children_path() then switch settings.data?.node
+            when Routes.children_path() then switch settings.data.path
               when undefined then handled = true; settings.success rootEntries()
               when 'app' then handled = true; settings.success appEntries()
+#         when undefined then switch settings.url
+#           when ...
 
       return if handled
       console.log arguments
